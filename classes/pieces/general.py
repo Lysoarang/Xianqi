@@ -1,6 +1,6 @@
 from classes.piece import Piece
 
-class King(Piece):
+class General(Piece):
     def __init__(self, x, y, color, type):
         super().__init__(x, y, color, 'King')
 

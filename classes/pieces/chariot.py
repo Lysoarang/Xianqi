@@ -16,7 +16,7 @@ class Chariot(Piece):
                     break
                 piece = board.grid[new_x][new_y]
                 if piece is None:
-                    moves.append(new_x, new_y)
+                    moves.append((new_x, new_y))
                 elif piece.color != self.color:
                     moves.append((new_x, new_y))
                     break

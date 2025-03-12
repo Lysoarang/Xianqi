@@ -8,5 +8,5 @@ class Piece(ABC):
         self.type = type
 
     @abstractmethod
-    def valid_move(self, board):
+    def get_valid_moves(self, board):
         pass
