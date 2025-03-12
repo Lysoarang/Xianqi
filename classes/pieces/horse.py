@@ -11,5 +11,6 @@ class Horse(Piece):
             new_x, new_y = self.x + dx, self.y + dy
             if 0 <= new_x <= 9 and 0 <= new_y <= 8:
                 if board.grid[new_x][new_y] is None or board.grid[new_x][new_y].color != self.color:
-                    moves.append((new_x, new_y))
+                    if board.grid[self.x + (dx // 2)][self.y + (dy // 2)] is None:
+                        moves.append((new_x, new_y))
         return moves

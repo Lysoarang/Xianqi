@@ -16,5 +16,6 @@ class Elephant(Piece):
             # distance <= 4 means the elephant have not yet crossed the river    
             if 0 <= new_x <= 9 and 0 <= new_y <= 8 and distance <= 4:
                 if board.grid[new_x][new_y] is None or board.grid[new_x][new_y].color != self.color:
-                    moves.append((new_x, new_y))
+                    if board.grid[self.x + (dx // 2)][self.y + (dy // 2)] is None:
+                        moves.append((new_x, new_y))
         return moves

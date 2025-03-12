@@ -7,9 +7,6 @@ class Board:
         self.grid = [[None for _ in range(9)] for _ in range(10)]
         self.setup_peice()
 
-    def __str__(self):
-        return '\n'.join(['|'.join([j.type if j else '__' for j in i]) for i in self.grid])
-
     def create_piece(self, x, y, color, type):
         match type:
             case 'Soldier':
