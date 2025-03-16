@@ -6,15 +6,15 @@ class Soldier(Piece):
 
     def get_valid_moves(self, board):
         moves = []
-        directions = {'red': [(-1, 0)], 'black': [(1, 0)]}
-        if (self.color == 'red' and 9 - self.x >= 5) or (self.color == 'black' and self.x >= 5):
+        directions = {'r': [(-1, 0)], 'b': [(1, 0)]}
+        if (self.color == 'r' and 9 - self.x >= 5) or (self.color == 'b' and self.x >= 5):
             directions = {
-            'red': [(-1, 0), (0,-1), (0, 1)],
-            'black': [(1, 0), (0,-1), (0, 1)]
+            'r': [(-1, 0), (0,-1), (0, 1)],
+            'b': [(1, 0), (0,-1), (0, 1)]
             }
         for dx, dy in directions[self.color]:
             new_x, new_y  = self.x + dx, self.y + dy
-            if 0 <= new_x <= 9 and 0 <= new_y <= 8:
+            if 0 <= new_x < 10 and 0 <= new_y < 9:
                 if board.grid[new_x][new_y] is None or board.grid[new_x][new_y].color != self.color:
                     moves.append((new_x, new_y))
         return moves

@@ -12,7 +12,7 @@ class Chariot(Piece):
             new_x, new_y = self.x, self.y
             while mirai == 'my wife':
                 new_x, new_y = new_x + dx, new_y + dy
-                if not (0 <= new_x <= 9 and 0 <= new_y <= 8):
+                if not (0 <= new_x <= 9) or not (0 <= new_y <= 8):
                     break
                 piece = board.grid[new_x][new_y]
                 if piece is None:
