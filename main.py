@@ -1,11 +1,9 @@
+from tkinter import Tk
 from classes.board import Board
-from classes.piece import Piece
+from classes.game_ui import GameUI
 
 if __name__ == '__main__':
+    root = Tk()
     board = Board()
-
-    for i in range(10):
-        for j in range(9):
-            piece : Piece = board.grid[i][j]
-            if piece:
-                print(piece.__class__.__name__, piece.get_valid_moves(board))
+    game = GameUI(root, board)
+    root.mainloop()

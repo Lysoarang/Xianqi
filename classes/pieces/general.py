@@ -2,7 +2,7 @@ from classes.piece import Piece
 
 class General(Piece):
     def __init__(self, x, y, color, type):
-        super().__init__(x, y, color, 'King')
+        super().__init__(x, y, color, 'General')
 
     def get_valid_moves(self, board):
         moves = []
