@@ -8,13 +8,25 @@ earthy_orange = '#D0882C'
 dark_brown = '#803300'
 WIDTH = 740
 HEIGHT = 820
+river_words = ['楚', '河', '漢', '界']
 
 class GameUI:
     def __init__(self, root, board):
         # Initialize the interface
         self.root = root
         self.root.title('Xiangqi')
-        self.root.geometry('740x820')
+
+        # Get screen's size
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
+
+        # Calculate the position so that the window is in the middle of the screen
+        x_position = (screen_width - WIDTH) // 2
+        y_position = (screen_height - HEIGHT) // 2
+
+        # Set window's position
+        root.geometry(f'{WIDTH}x{HEIGHT}+{x_position}+{y_position}')
+        
         self.board = board
 
         # Create a canvas to draw board
@@ -44,7 +56,15 @@ class GameUI:
         self.canvas.create_line(450, 50, 290, 210, width = 2)
         self.canvas.create_line(290, 610, 450, 770, width = 2)
         self.canvas.create_line(450, 610, 290, 770, width = 2)
-
+        self.canvas.create_text(50 + cell_size + cell_size // 2, 50 + 4 * cell_size + cell_size // 2, text = river_words[0],
+                                font = ('Arial', 50), fill = 'black')
+        self.canvas.create_text(50 + cell_size * 2 + cell_size // 2, 50 + 4 * cell_size + cell_size // 2, text = river_words[1],
+                                font = ('Arial', 50), fill = 'black')
+        self.canvas.create_text(50 + cell_size * 5 + cell_size // 2, 50 + 4 * cell_size + cell_size // 2, text = river_words[2],
+                                font = ('Arial', 50), fill = 'black')
+        self.canvas.create_text(50 + cell_size * 6 + cell_size // 2, 50 + 4 * cell_size + cell_size // 2, text = river_words[3],
+                                font = ('Arial', 50), fill = 'black')
+        
     def load_piece_images(self):
         types = [
             'Soldier', 'Horse', 'Elephant', 'Advisor', 'General', 'Cannon', 'Chariot'
@@ -69,6 +89,6 @@ class GameUI:
                     key = f'{piece.color}_{piece.type}'
                     if key in self.piece_images:
                         self.canvas.create_image(50 + j * cell_size, 50 + i * cell_size, 
-                                                 image=self.piece_images[key], anchor='center')                   
+                                                 image = self.piece_images[key], anchor = 'center')                   
 
 
